@@ -1,0 +1,26 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="todo">	
+	 		
+	<insert id="add" parameterType="Todo">
+		INSERT INTO todo
+		(type,title,complete_ny,created_date)
+		VALUES
+		(#{type},#{title},'n',SYSDATE())
+	</insert>
+	
+	
+	<select id="getAll" resultType="Todo">
+		SELECT * FROM todo
+		ORDER BY todo_idx DESC
+	</select>
+	
+	
+	<update id="updateComplete" parameterType="Todo">
+		UPDATE todo
+		SET
+			complete_ny=#{complete_ny}
+		WHERE todo_idx=#{todo_idx}	
+	</update>
+	
+	
+</mapper>
